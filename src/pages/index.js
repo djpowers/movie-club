@@ -1,15 +1,13 @@
 import React from "react"
 import JSONData from "../../content/movie-ratings.json"
-import { Link } from "gatsby"
 import { ResponsiveBar } from "@nivo/bar"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
+    <SEO title="Movie Club" />
     <ResponsiveBar
       data={JSONData.content}
       indexBy="title"

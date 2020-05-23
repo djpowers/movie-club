@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Movie Club Ratings`,
+    title: `Movie Club`,
     description: `Ratings for the films watched in the weekly movie club`,
     author: `@gatsbyjs`,
     robots: `noindex,nofollow`,
