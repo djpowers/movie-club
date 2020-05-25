@@ -13,8 +13,8 @@ const IndexPage = () => (
       indexBy="title"
       keys={["DP", "JG", "ML", "JS"]}
       groupMode="grouped"
-      minValue="0"
-      maxValue="100"
+      minValue={0}
+      maxValue={100}
       margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
       colors={{ scheme: "nivo" }}
       legends={[
