@@ -1,9 +1,30 @@
 import React from "react"
 import JSONData from "../../content/movie-ratings.json"
+import { line } from "d3-shape"
 import { ResponsiveBar } from "@nivo/bar"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+
+const LineLayer = ({ bars, xScale, yScale }) => {
+  const lineGenerator = line()
+    .x(bar => xScale(bar.data.indexValue) + bar.width / 2 + bar.width * 1.5)
+    .y(bar =>
+      yScale(
+        Object.values(bar.data.data)
+          .filter(datum => Number.isInteger(datum))
+          .reduce((prev, curr) => prev + curr) /
+          (Object.values(bar.data.data).length - 1)
+      )
+    )
+  return (
+    <path
+      d={lineGenerator(bars.slice(0, JSONData.content.length))}
+      fill="none"
+      stroke="rgba(0, 2, 35, 0.25)"
+    />
+  )
+}
 
 const IndexPage = () => (
   <Layout>
@@ -41,6 +62,7 @@ const IndexPage = () => (
           ],
         },
       ]}
+      layers={["grid", "axes", "bars", "markers", "legends", LineLayer]}
     />
   </Layout>
 )
