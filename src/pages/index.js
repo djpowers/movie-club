@@ -19,7 +19,11 @@ const LineLayer = ({ bars, xScale, yScale }) => {
     )
   return (
     <path
-      d={lineGenerator(bars.slice(0, JSONData.content.length))}
+      d={lineGenerator(
+        [
+          ...new Map(bars.map(bars => [bars.data.indexValue, bars])).values(),
+        ].sort((a, b) => a.data.index - b.data.index)
+      )}
       fill="none"
       stroke="rgba(0, 2, 35, 0.25)"
     />
