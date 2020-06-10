@@ -1,7 +1,7 @@
 import React from "react"
 import JSONData from "../../content/movie-ratings.json"
 import { line } from "d3-shape"
-import { ResponsiveBar } from "@nivo/bar"
+import { Bar } from "@nivo/bar"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -33,13 +33,15 @@ const LineLayer = ({ bars, xScale, yScale }) => {
 const IndexPage = () => (
   <Layout>
     <SEO title="Movie Club" />
-    <ResponsiveBar
+    <Bar
       data={JSONData.content}
       indexBy="title"
       keys={["DP", "JG", "ML", "JS"]}
       groupMode="grouped"
       minValue={0}
       maxValue={100}
+      height={340}
+      width={120 * JSONData.content.length}
       margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
       colors={{ scheme: "nivo" }}
       legends={[
